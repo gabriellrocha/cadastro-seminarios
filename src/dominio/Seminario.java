@@ -5,13 +5,21 @@ import java.util.Set;
 
 public class Seminario {
 
+    private static int contadorId;
+
+    private final Integer id;
     private String titulo;
     private Endereco endereco;
     private final Set<Aluno> alunos = new HashSet<>();
 
     public Seminario(String titulo, Endereco endereco) {
+        this.id = ++contadorId;
         this.titulo = titulo;
         this.endereco = endereco;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getTitulo() {

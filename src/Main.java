@@ -1,4 +1,9 @@
+import dominio.Endereco;
+import dominio.Seminario;
+
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -6,12 +11,29 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     private static int opcao;
 
+    private static final List<Seminario> seminarios = new ArrayList<>();
+
     public static void main(String[] args) {
 
-        lerOpcao();
+        while (Main.opcao != 4) {
 
+            lerOpcao();
 
-
+            switch (opcao) {
+                case 1:
+                    seminarios.add(novoSeminario());
+                    break;
+                case 2:
+                    System.out.println("Excluir seminario");
+                    break;
+                case 3:
+                    System.out.println("Visualizar seminários");
+                    break;
+                case 4:
+                    System.out.println("Fechando programa");
+                    break;
+            }
+        }
     }
 
     static void exibirOpcoes() {
@@ -44,5 +66,42 @@ public class Main {
                 scanner.nextLine();
             }
         }
+
+        scanner.nextLine();
     }
+
+    private static Seminario novoSeminario() {
+        System.out.println("\tNOVO SEMINÁRIO");
+        System.out.print("Titulo: ");
+        String titulo = scanner.nextLine();
+
+       return new Seminario(titulo, cadastrarNovoEndereco());
+    }
+
+    private static Endereco cadastrarNovoEndereco() {
+
+        boolean isValid = false;
+        Integer numero = null;
+
+        System.out.println("--------Endereço----------");
+        System.out.print("Cidade: ");
+        String cidade = scanner.nextLine();
+
+        System.out.print("Logadouro: ");
+        String logadouro = scanner.nextLine();
+
+        while (!isValid) {
+            try {
+                System.out.print("Número: ");
+                numero = scanner.nextInt();
+                isValid = true;
+            } catch (InputMismatchException e) {
+                scanner.nextLine();
+                System.out.println("Número inválido. Por favor, informe número correto.");
+            }
+        }
+
+        return new Endereco(cidade, logadouro, numero);
+    }
+
 }
