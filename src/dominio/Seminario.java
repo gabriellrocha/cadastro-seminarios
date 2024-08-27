@@ -41,4 +41,8 @@ public class Seminario {
     public Set<Aluno> getAlunos() {
         return alunos;
     }
+
+    public void setAluno(Aluno aluno) {
+        alunos.add(aluno);
+    }
 }
