@@ -30,7 +30,7 @@ public class Main {
                             System.out.println("\nCADASTRADO COM SUCESSO!");
                             break;
                         case 2:
-                            System.out.println("Excluir seminario");
+                            excluirSeminario();
                             break;
                         case 3:
                             imprimirSeminarios();
@@ -174,6 +174,7 @@ public class Main {
             System.out.println("NENHUM SEMINÁRIO DISPONÍVEL"); return false;
         }
 
+        System.out.println("\t\tSEMINÁRIOS");
         for (Seminario seminario : Main.seminarios) {
             System.out.println(seminario.getId() + " - " + "Título: " + seminario.getTitulo());
         }
@@ -233,5 +234,31 @@ public class Main {
         seminario.getProfessores().add(new Professor(nome, ESPECIALIDADE.valueOf(especialidade.toUpperCase().replace(' ', '_'))));
         System.out.println("CADASTRADO COM SUCESSO!");
 
+    }
+
+    private static Seminario buscarSeminario(Integer id) {
+        for(Seminario seminario : Main.seminarios){
+            if (seminario.getId().equals(id)) {
+                return seminario;
+            }
+        }
+        return null;
+    }
+
+    private static void excluirSeminario() {
+        if (Main.seminarios.isEmpty()) {
+            System.out.println("\nNENHUM SEMINÁRIO CADASTRADO");
+            return;
+        }
+        imprimirSeminarios();
+        System.out.print("Informe o ID: ");
+        Seminario seminario = buscarSeminario(scanner.nextInt());
+
+        if(seminario == null) {
+           return;
+        } else {
+            Main.seminarios.remove(seminario);
+            System.out.println("Excluído com êxito");
+        }
     }
 }
