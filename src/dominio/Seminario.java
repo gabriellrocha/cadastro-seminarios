@@ -1,6 +1,8 @@
 package dominio;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Seminario {
@@ -11,6 +13,7 @@ public class Seminario {
     private String titulo;
     private Endereco endereco;
     private final Set<Aluno> alunos = new HashSet<>();
+    private final List<Professor> professores = new ArrayList<>();
 
     public Seminario(String titulo, Endereco endereco) {
         this.id = ++contadorId;
@@ -44,5 +47,14 @@ public class Seminario {
 
     public void setAluno(Aluno aluno) {
         alunos.add(aluno);
+    }
+
+    public List<Professor> getProfessores() {
+        return professores;
+    }
+
+    public void setProfessor(Professor professor) {
+        professores.add(professor);
+        professor.getSeminarios().add(this);
     }
 }

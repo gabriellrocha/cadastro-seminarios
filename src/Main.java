@@ -1,6 +1,8 @@
 import dominio.Aluno;
 import dominio.Endereco;
+import dominio.Professor;
 import dominio.Seminario;
+import enums.ESPECIALIDADE;
 import exceptions.InvalidCPFException;
 
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-            while (Main.opcao != 5) {
+            while (Main.opcao != 6) {
 
                 lerOpcao();
 
@@ -37,6 +39,9 @@ public class Main {
                             novoAluno();
                             break;
                         case 5:
+                            novoProfessor();
+                            break;
+                        case 6:
                             System.out.println("Fechando programa");
                             break;
                     }
@@ -49,11 +54,13 @@ public class Main {
     static void exibirOpcoes() {
 
         System.out.print(
+                "\n---------------------------------------" +
                 "\n1 - Cadastrar novo seminário" +
                 "\n2 - Excluir seminário" +
                 "\n3 - Visualizar todos seminário" +
                 "\n4 - Cadastrar novo aluno" +
-                "\n5 - Encerrar" +
+                "\n5 - Cadastrar novo Professor " +
+                "\n6 - Encerrar" +
                 "\n---------------------------------------" +
                 "\nINFORME O NÚMERO DA OPÇÃO DESEJADA: ");
     }
@@ -67,7 +74,7 @@ public class Main {
             try {
                 exibirOpcoes();
                 opcao = scanner.nextInt();
-                if (opcao < 1 || opcao > 5) {
+                if (opcao < 1 || opcao > 6) {
                     System.out.println("\nOPÇÃO INVÁLIDA. Por favor, informe uma opção dentre as sugeridas");
                 } else {
                     isValid = true;
@@ -127,7 +134,7 @@ public class Main {
                return;
             }
 
-            System.out.print("INFORME O NÚMERO DO SEMINÁRIO QUE O ALUNO PARTICIPARÁ: ");
+            System.out.print("\nINFORME O NÚMERO DO SEMINÁRIO QUE O ALUNO PARTICIPARÁ: ");
             Integer idSeminario = scanner.nextInt();
 
             seminario = hasSeminario(idSeminario);
@@ -195,5 +202,36 @@ public class Main {
             }
         }
         return false;
+    }
+
+    private static void novoProfessor() {
+
+        Seminario seminario = null;
+
+        while (seminario == null) {
+            if(!imprimirSeminarios()){
+                return;
+            }
+
+            System.out.print("\nINFORME O NÚMERO DO SEMINÁRIO QUE O PROFESSOR IRÁ MINISTRAR: ");
+            Integer idSeminario = scanner.nextInt();
+
+            seminario = hasSeminario(idSeminario);
+        }
+
+        System.out.println("\t\tNOVO PROFESSOR");
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.println();
+        for (int i=1; i <= ESPECIALIDADE.values().length; i++) {
+            System.out.println("- " + ESPECIALIDADE.values()[i - 1].toString().replace('_', ' '));
+        }
+
+        System.out.println("\nQUAL À ESPECIALIDADE? ");
+        String especialidade = scanner.nextLine();
+        seminario.getProfessores().add(new Professor(nome, ESPECIALIDADE.valueOf(especialidade.toUpperCase().replace(' ', '_'))));
+        System.out.println("CADASTRADO COM SUCESSO!");
+
     }
 }

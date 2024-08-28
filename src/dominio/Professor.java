@@ -31,4 +31,8 @@ public class Professor {
     public void setEspecialidade(ESPECIALIDADE especialidade) {
         this.especialidade = especialidade;
     }
+
+    public Set<Seminario> getSeminarios() {
+        return seminarios;
+    }
 }
