@@ -19,7 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-            while (Main.opcao != 6) {
+            while (Main.opcao != 7) {
 
                 lerOpcao();
 
@@ -42,6 +42,9 @@ public class Main {
                             novoProfessor();
                             break;
                         case 6:
+                            exibirSeminario();
+                            break;
+                        case 7:
                             System.out.println("Fechando programa");
                             break;
                     }
@@ -60,7 +63,8 @@ public class Main {
                 "\n3 - Visualizar todos seminário" +
                 "\n4 - Cadastrar novo aluno" +
                 "\n5 - Cadastrar novo Professor " +
-                "\n6 - Encerrar" +
+                "\n6 - Visualizar informações de um seminário" +
+                "\n7 - Encerrar" +
                 "\n---------------------------------------" +
                 "\nINFORME O NÚMERO DA OPÇÃO DESEJADA: ");
     }
@@ -74,7 +78,7 @@ public class Main {
             try {
                 exibirOpcoes();
                 opcao = scanner.nextInt();
-                if (opcao < 1 || opcao > 6) {
+                if (opcao < 1 || opcao > 7) {
                     System.out.println("\nOPÇÃO INVÁLIDA. Por favor, informe uma opção dentre as sugeridas");
                 } else {
                     isValid = true;
@@ -261,4 +265,21 @@ public class Main {
             System.out.println("Excluído com êxito");
         }
     }
+
+    private static void exibirSeminario() {
+        if (Main.seminarios.isEmpty()) {
+            System.out.println("\nNENHUM SEMINÁRIO CADASTRADO");
+            return;
+        }
+        imprimirSeminarios();
+        System.out.print("Informe o ID: ");
+        Seminario seminario = buscarSeminario(scanner.nextInt());
+
+        if(seminario == null) {
+            return;
+        } else {
+            seminario.imprimir();
+        }
+    }
+
 }

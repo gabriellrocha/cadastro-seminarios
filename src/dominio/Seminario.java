@@ -21,6 +21,30 @@ public class Seminario {
         this.endereco = endereco;
     }
 
+    public void imprimir() {
+
+        System.out.println("\nTítulo: " + titulo);
+        System.out.println("\nLocal: " + endereco.getLogadouro() + " " + endereco.getNumero() + " " + endereco.getCidade());
+
+        if (professores.isEmpty()) {
+            System.out.println("\nNenhum professor confirmado até o momento");
+        } else {
+            System.out.println("\nProfessores ministrantes: ");
+            for (Professor prof : professores) {
+                System.out.println(prof.getNome() + " Especialidade -> " + prof.getEspecialidade().toString().replace('_', ' '));
+            }
+        }
+
+        if (alunos.isEmpty()) {
+            System.out.println("\nNenhum aluno(a) confirmado até o momento");
+        } else {
+            System.out.println("\nAlunos(as) já confirmados: ");
+            for (Aluno aluno : alunos) {
+                System.out.println(aluno.getNome() + " Idade: " + aluno.getIdade());
+            }
+        }
+    }
+
     public Integer getId() {
         return id;
     }
