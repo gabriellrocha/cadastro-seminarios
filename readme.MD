@@ -1,5 +1,5 @@
 # Cadastro seminários
-![](src/resources/img/main.png)
+![](src/main/resources/imagens/main.png)
 ## Descrição
 Aplicação simples de linha de comando (CLI) para cadastro de seminários.
 Os usuários podem adicionar, listar e remover seminários, incluindo informações como título,
@@ -24,7 +24,7 @@ durante estudos, tais como:
 - `Funcionalidade 3:` Cadastrar professores em seminários existentes
 
 ## Aplicação
-![](src/resources/img/cadastro.gif)
+![](src/main/resources/imagens/cadastro.gif)
 
 ## ✔️ Tecnologias e técnicas utilizadas
 - ``JAVA 8``
