@@ -17,16 +17,31 @@ durante estudos, tais como:
  - Associação de classes (relacionamentos)
  - Boas práticas de código
  - Padrões de commit
+ - Maven (compilação e execução)
 
-## Funcionalidades
+## 🚀 Funcionalidades
 - `Funcionalidade 1:` Gerenciar seminários (Criar, visualizar e deletar)
 - `Funcionalidade 2:` Cadastrar alunos em seminários existentes
 - `Funcionalidade 3:` Cadastrar professores em seminários existentes
 
-## Aplicação
+## ✔️ Aplicação
 ![](src/main/resources/imagens/cadastro.gif)
 
-## ✔️ Tecnologias e técnicas utilizadas
+## 🛠️ Tecnologias e técnicas utilizadas
+- ``MAVEN``
 - ``JAVA 8``
 
-## Como executar o projeto
+## 📋 Pré-requisitos
+- [Maven - Gerente de Dependência](https://maven.apache.org/download.cgi)
+- [JDK 8](https://www.oracle.com/br/java/technologies/javase/javase8-archive-downloads.html)
+
+
+## 🔧 Como executar o projeto
+- Faça o download das ferramentas necessárias citadas anteriormente em pré-requisitos
+- Após tudo devidamente instalado e configurado
+- Clone o projeto para sua máquina ou faça o download do zip clicando [aqui](https://github.com/gabriellrocha/cadastro-seminarios/archive/refs/heads/main.zip)
+- Caso tenha baixado o .zip será necessário descompactá-lo em um diretório de sua preferência
+- Navegue até a pasta raiz ``\cadastro-seminarios-main``
+- Execute os seguintes comandos:
+  - `mvn clean install (no diretório raiz)`
+  - `mvn exec:java`
